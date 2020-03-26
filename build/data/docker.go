@@ -57,7 +57,7 @@ func GetDockerTags() (tags []string, err error) {
 		return releaseInfo.Next, nil
 	}
 
-	url := "https://hub.docker.com/v2/repositories/siacentral/sia/tags"
+	url := "https://hub.docker.com/v2/repositories/siacentral/scprime/tags"
 
 	for {
 		next, err := getTags(url)

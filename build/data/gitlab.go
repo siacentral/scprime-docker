@@ -19,11 +19,11 @@ type (
 	}
 )
 
-//GetGitlabReleases returns all Sia release tags matching the format v0.0.0 or v0.0.0-rc0
+//GetGitlabReleases returns all SCPrime release tags matching the format v0.0.0 or v0.0.0-rc0
 func GetGitlabReleases() (tags []string, latest string, err error) {
 	var releaseMeta []tagInfo
 
-	req, err := http.NewRequest("GET", "https://gitlab.com/api/v4/projects/7508674/repository/tags?order_by=name", nil)
+	req, err := http.NewRequest("GET", "https://gitlab.com/api/v4/projects/10135403/repository/tags?order_by=name", nil)
 
 	if err != nil {
 		return

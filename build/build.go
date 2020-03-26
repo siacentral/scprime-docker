@@ -9,7 +9,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/siacentral/docker-sia/build/data"
+	"github.com/siacentral/scprime-docker/build/data"
 )
 
 var (
