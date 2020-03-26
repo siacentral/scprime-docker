@@ -11,7 +11,7 @@ An unofficial docker image for SCPrime. Automatically builds Sia using the sourc
 docker pull siacentral/scprime:latest
 ```
 
-**Get Sia v1.4.2.1**
+**Get SCPrime v1.4.2.1**
 ```
 docker pull siacentral/scprime:1.4.2.1
 ```
@@ -42,7 +42,7 @@ It is important to never `--publish` port `4280` to anything but
 wallet.
 
 `docker volume create scp-data` creates a new persistent volume called 
-"scp-data" to store Sia's data and blockchain. This will allow for the 
+"scp-data" to store SCPrime's data and blockchain. This will allow for the 
 blockchain to remain consistent between container restarts or updates.
 
 Containers should never share volumes. If multiple SCPrime containers are 
@@ -73,7 +73,7 @@ docker run \
   --publish 127.0.0.1:4280:4280 \
   --publish 4281:4281 \
   --publish 4282:4282 \
-  --name sia \
+  --name scprime \
    siacentral/scprime
 ```
 
@@ -88,7 +88,7 @@ docker run \
   --publish 127.0.0.1:4280:4280 \
   --publish 4281:4281 \
   --publish 4282:4282 \
-  --name sia \
+  --name scprime \
    siacentral/scprime
 ```
 
@@ -103,7 +103,7 @@ docker run \
   --publish 127.0.0.1:4280:4280 \
   --publish 4281:4281 \
   --publish 4282:4282 \
-  --name sia \
+  --name scprime \
    siacentral/scprime
 ```
 

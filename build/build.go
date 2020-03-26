@@ -58,7 +58,7 @@ func handleRelease(tag, commit string, latest bool) (successful []string, err er
 	dockerTag := fmt.Sprintf("%s:%s", dockerHubRepo, tag)
 	buildArgs := []string{"build",
 		"--build-arg",
-		fmt.Sprintf("SIA_VERSION=%s", commit),
+		fmt.Sprintf("SCPRIME_VERSION=%s", commit),
 		"-t", dockerTag}
 
 	// if this is the latest full release tag it with latest too

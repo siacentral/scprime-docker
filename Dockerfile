@@ -14,7 +14,7 @@ RUN echo "Clone SCP Repo" && git clone -b $SCPRIME_VERSION https://gitlab.com/Si
 RUN git diff --quiet; exit 0
 RUN echo "Build SCPrime" && make release
 
-# run sia
+# run spd
 FROM alpine:latest
 
 ENV SCPRIME_MODULES gctwhr

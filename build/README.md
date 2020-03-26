@@ -6,7 +6,7 @@ It automatically builds and pushes any missing versions of SCPrime.
 
 Includes some logic for `latest` and `unstable` tags. This CLI is run on Sia 
 Central's build server via `cron` every 15 minutes to keep it automatically
-updated with Sia's latest releases.
+updated with SPrime's latest releases.
 
 **Build**
 
