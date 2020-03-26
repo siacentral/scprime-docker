@@ -1,5 +1,7 @@
 An unofficial docker image for SCPrime. Automatically builds Sia using the source code from the official repository: https://gitlab.com/SiaPrime/SiaPrime
 
+SCPrime is a fork of the original Sia protocol and platform
+
 # Release Tags
 
 + latest - the latest stable SCPrime release
