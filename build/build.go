@@ -107,11 +107,15 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	log.Println(len(releases), latest)
+
 	built, err := data.GetDockerTags()
 
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	log.Println(len(built))
 
 	builtTags := make(map[string]bool)
 

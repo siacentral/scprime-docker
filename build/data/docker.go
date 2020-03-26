@@ -2,7 +2,6 @@ package data
 
 import (
 	"encoding/json"
-	"errors"
 	"net/http"
 	"sort"
 )
@@ -42,8 +41,7 @@ func GetDockerTags() (tags []string, err error) {
 		}
 
 		if len(releaseInfo.Results) == 0 {
-			err = errors.New("no releases")
-			return nil, err
+			return nil, nil
 		}
 
 		for _, tag := range releaseInfo.Results {
