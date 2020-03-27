@@ -1,11 +1,11 @@
-An unofficial docker image for SCPrime. Automatically builds Sia using the source code from the official repository: https://gitlab.com/SiaPrime/SiaPrime
+An unofficial docker image for SCPrime. Automatically builds SCPrime using the source code from the official repository: https://gitlab.com/SiaPrime/SiaPrime
 
 SCPrime is a fork of the original Sia protocol and platform
 
 # Release Tags
 
 + latest - the latest stable SCPrime release
-+ versions - builds of exact SCPrime releases such as: `1.4.4`, `1.4.3` or `1.4.2.1`
++ versions - builds of exact SCPrime releases such as: `1.4.2.0` or `1.4.1.2`
 + unstable - an unstable build of SCPrime's master branch. Updated every 15 minutes
 
 **Get latest release:**
@@ -61,7 +61,7 @@ ensure that the API password stays the same between updates and restarts.
 ### Using Specific Modules
 
 By specifying the environment variable `SCPRIME_MODULES` you can pass in different combinations of
-Sia modules to run. For example: `-e SCPRIME_MODULES="gct"` tells SCPrime to only run
+SCPrime modules to run. For example: `-e SCPRIME_MODULES="gct"` tells SCPrime to only run
 the gateway, consensus, and transactionpool modules.
 
 #### Consensus Only
