@@ -71,7 +71,7 @@ func handleRelease(commit string, tags ...string) (successful []string, err erro
 	}
 
 	buildArgs = append(buildArgs, ".")
-	//err = runCommand(dockerPath, buildArgs...)
+	err = runCommand(dockerPath, buildArgs...)
 	if err != nil {
 		return
 	}
