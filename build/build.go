@@ -52,55 +52,36 @@ func runCommand(command string, args ...string) error {
 	return nil
 }
 
-func handleRelease(tag, commit string, latest bool) (successful []string, err error) {
-	log.Printf("Building %s from %s", tag, commit)
+func handleRelease(commit string, tags ...string) (successful []string, err error) {
+	log.Printf("Building %s from %s", strings.Join(tags, ", "), commit)
 
-	dockerTag := fmt.Sprintf("%s:%s", dockerHubRepo, tag)
-	buildArgs := []string{"build",
+	builtTags := []string{}
+	buildArgs := []string{"buildx",
+		"build",
 		"--build-arg",
 		fmt.Sprintf("SCPRIME_VERSION=%s", commit),
-		"-t", dockerTag}
+		"--platform",
+		"linux/amd64,linux/arm64",
+		"--push"}
 
-	// if this is the latest full release tag it with latest too
-	if latest {
-		buildArgs = append(buildArgs, "-t", fmt.Sprintf("%s:latest", dockerHubRepo))
+	for _, tag := range tags {
+		tag = fmt.Sprintf("%s:%s", dockerHubRepo, tag)
+		buildArgs = append(buildArgs, "-t", tag)
+		builtTags = append(builtTags, tag)
 	}
 
 	buildArgs = append(buildArgs, ".")
-	err = runCommand(dockerPath, buildArgs...)
+	//err = runCommand(dockerPath, buildArgs...)
 	if err != nil {
 		return
 	}
 
-	err = runCommand(dockerPath, "push", dockerTag)
-	if err != nil {
-		return nil, err
-	}
-
-	successful = append(successful, tag)
-
-	// if this is the latest tag push it to docker hub too
-	if latest {
-		err = runCommand(dockerPath, "push", fmt.Sprintf("%s:latest", dockerHubRepo))
-		if err != nil {
-			return
-		}
-		successful = append(successful, fmt.Sprintf("latest (%s)", tag))
-	}
+	successful = append(successful, builtTags...)
 
 	return
 }
 
-func main() {
-	flag.StringVar(&dockerHubRepo, "docker-hub-repo", "", "the docker hub repository to push to")
-	flag.StringVar(&dockerPath, "docker-path", "/usr/bin/docker", "the path to docker")
-	flag.BoolVar(&overwrite, "overwrite", false, "overwrite existing tags with new builds")
-	flag.Parse()
-
-	if len(dockerHubRepo) == 0 {
-		log.Fatalln("--docker-hub-repo is required")
-	}
-
+func buildDocker() {
 	releases, latest, err := data.GetGitlabReleases()
 
 	if err != nil {
@@ -128,8 +109,14 @@ func main() {
 			continue
 		}
 
+		tags := []string{tag}
+
+		if tag == latest {
+			tags = append(tags, "latest")
+		}
+
 		// tags are normalized without the leading "v", so we need to add it for the commit id
-		pushed, err := handleRelease(tag, "v"+tag, tag == latest)
+		pushed, err := handleRelease("v"+tag, tags...)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -138,7 +125,7 @@ func main() {
 	}
 
 	//build the unstable master branch
-	pushed, err := handleRelease("unstable", "master", false)
+	pushed, err := handleRelease("master", "unstable")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -147,4 +134,17 @@ func main() {
 
 	//log pushed tags
 	log.Println("Successfully built and pushed:", strings.Join(successfulTags, ", "))
+}
+
+func main() {
+	flag.StringVar(&dockerHubRepo, "docker-hub-repo", "", "the docker hub repository to push to")
+	flag.StringVar(&dockerPath, "docker-path", "/usr/bin/docker", "the path to docker")
+	flag.BoolVar(&overwrite, "overwrite", false, "overwrite existing tags with new builds")
+	flag.Parse()
+
+	if len(dockerHubRepo) == 0 {
+		log.Fatalln("--docker-hub-repo is required")
+	}
+
+	buildDocker()
 }
