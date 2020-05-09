@@ -12,9 +12,6 @@ WORKDIR /app
 
 RUN echo "Clone SCP Repo" && git clone -b $SCPRIME_VERSION https://gitlab.com/SiaPrime/SiaPrime.git /app
 
-# docker makes GIT_DIRTY from the make file break even with a fresh repo
-# updates git's index and makes it work properly again
-RUN git diff --quiet; exit 0
 RUN echo "Build SCPrime" && mkdir /app/releases && go build -a -tags 'netgo' -trimpath \
 	-ldflags="-s -w -X 'gitlab.com/SiaPrime/SiaPrime/build.GitRevision=`git rev-parse --short HEAD`' -X 'gitlab.com/SiaPrime/SiaPrime/build.BuildTime=`date`'" \
 	-o /app/releases ./cmd/spd ./cmd/spc
