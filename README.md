@@ -1,3 +1,7 @@
+# SCPrime - Docker
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/siacentral/scprime?color=2073ee&style=for-the-badge)](https://hub.docker.com/r/siacentral/sia)
+
 An unofficial docker image for SCPrime. Automatically builds SCPrime using the source code from the official repository: https://gitlab.com/SiaPrime/SiaPrime
 
 SCPrime is a fork of the original Sia protocol and platform
@@ -5,6 +9,7 @@ SCPrime is a fork of the original Sia protocol and platform
 # Release Tags
 
 + latest - the latest stable SCPrime release
++ beta - the latest release candidate for the next version of SCPrime
 + versions - builds of exact SCPrime releases such as: `1.4.2.0` or `1.4.1.2`
 + unstable - an unstable build of SCPrime's master branch. Updated every 15 minutes
 
