@@ -1,8 +1,8 @@
 # SCPrime - Docker
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/siacentral/scprime?color=2073ee&style=for-the-badge)](https://hub.docker.com/r/siacentral/sia)
+[![Docker Pulls](https://img.shields.io/docker/pulls/siacentral/scprime?color=2073ee&style=for-the-badge)](https://hub.docker.com/r/siacentral/scprime)
 
-An unofficial docker image for SCPrime. Automatically builds SCPrime using the source code from the official repository: https://gitlab.com/SiaPrime/SiaPrime
+An unofficial docker image for SCPrime. Automatically builds SCPrime using the source code from the official repository: https://gitlab.com/scpcorp/ScPrime
 
 SCPrime is a fork of the original Sia protocol and platform
 
