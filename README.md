@@ -40,6 +40,7 @@ docker run \
   --publish 127.0.0.1:4280:4280 \
   --publish 4281:4281 \
   --publish 4282:4282 \
+  --publish 4283:4283 \
   --name scprime \
    siacentral/scprime
 ```
@@ -80,6 +81,7 @@ docker run \
   --publish 127.0.0.1:4280:4280 \
   --publish 4281:4281 \
   --publish 4282:4282 \
+  --publish 4283:4283 \
   --name scprime \
    siacentral/scprime
 ```
@@ -95,6 +97,7 @@ docker run \
   --publish 127.0.0.1:4280:4280 \
   --publish 4281:4281 \
   --publish 4282:4282 \
+  --publish 4283:4283 \
   --name scprime \
    siacentral/scprime
 ```
@@ -110,6 +113,7 @@ docker run \
   --publish 127.0.0.1:4280:4280 \
   --publish 4281:4281 \
   --publish 4282:4282 \
+  --publish 4283:4283 \
   --name scprime \
    siacentral/scprime
 ```
