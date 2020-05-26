@@ -14,7 +14,7 @@ RUN echo "Clone SCP Repo" && git clone -b $SCPRIME_VERSION https://gitlab.com/sc
 
 # required compatibility for older versions which used SiaPrime/SiaPrime/build over scpcorp/ScPrime/build
 RUN echo "Build SCPrime" && mkdir /app/releases && go build -a -tags 'netgo' -trimpath \
-	-ldflags="-s -w -X 'gitlab.com/scpcorp/ScPrime/build.GitRevision=`git rev-parse --short HEAD`' -X 'gitlab.com/scpcorp/ScPrime/build.BuildTime=`date`' -X 'gitlab.com/SiaPrime/SiaPrime/build.GitRevision=`git rev-parse --short HEAD`' -X 'gitlab.com/SiaPrime/SiaPrime/build.BuildTime=`date`'" \
+	-ldflags="-s -w -X 'gitlab.com/scpcorp/ScPrime/build.GitRevision=`git rev-parse --short HEAD`' -X 'gitlab.com/scpcorp/ScPrime/build.BuildTime=`git show -s --format=%ci HEAD``' -X 'gitlab.com/SiaPrime/SiaPrime/build.GitRevision=`git rev-parse --short HEAD`' -X 'gitlab.com/SiaPrime/SiaPrime/build.BuildTime=`git show -s --format=%ci HEAD``'" \
 	-o /app/releases ./cmd/spd ./cmd/spc
 
 # run spd
@@ -22,7 +22,7 @@ FROM alpine:latest
 
 ENV SCPRIME_MODULES gctwhr
 
-EXPOSE 4280 4281 4282
+EXPOSE 4280 4281 4282 4283
 
 COPY --from=buildgo /app/releases ./
 
