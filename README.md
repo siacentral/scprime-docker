@@ -11,7 +11,7 @@ SCPrime is a fork of the original Sia protocol and platform
 + latest - the latest stable SCPrime release
 + beta - the latest release candidate for the next version of SCPrime
 + versions - builds of exact SCPrime releases such as: `1.4.2.0` or `1.4.1.2`
-+ unstable - an unstable build of SCPrime's current master branch.
++ unstable - an unstable build of SCPrime's current Integration branch.
 
 **Get latest release:**
 ```
