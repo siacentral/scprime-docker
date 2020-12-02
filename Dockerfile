@@ -1,5 +1,5 @@
 # build scp
-FROM golang:1.13-alpine AS buildgo
+FROM golang:1.15-alpine AS buildgo
 
 ARG SCPRIME_VERSION=master
 ARG RC=master
