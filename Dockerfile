@@ -20,15 +20,10 @@ RUN echo "Build SCPrime" && mkdir /app/releases && go build -a -tags 'netgo' -tr
 # run spd
 FROM alpine:latest
 
-ENV SCPRIME_MODULES gctwhr
+COPY --from=buildgo /app/releases /usr/local/bin
 
 EXPOSE 4281 4282 4283
 
-COPY --from=buildgo /app/releases ./
+VOLUME [ "/scp-data" ]
 
-ENTRYPOINT ./spd \
-	--disable-api-security \
-	-d /scp-data \
-	--modules $SCPRIME_MODULES \
-	--api-addr ":4280" \
-	"$@"
+ENTRYPOINT [ "spd", "--disable-api-security", "-d", "/scp-data", "--api-addr", ":4280" ]
