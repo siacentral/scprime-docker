@@ -48,11 +48,11 @@ are needed one unique volume should be created per container.
 
 ## Basic Container
 ```
-docker volume create scprime-data
+docker volume create scp-data
 docker run \
 	--detach \
 	--restart unless-stopped \
-	--mount type=volume,src=scprime-data,target=/scprime-data \
+	--mount type=volume,src=scp-data,target=/scp-data \
 	--publish 127.0.0.1:4280:4280 \
 	--publish 4281:4281 \
 	--publish 4282:4282 \
@@ -116,11 +116,11 @@ services:
       - 4283:4283
       - 4284:4284
     volumes:
-      - scprime-data:/scprime-data
+      - scp-data:/scp-data
     restart: unless-stopped
 
 volumes:
-  scprime-data:
+  scp-data:
 ```
 
 #### Change API port from 4280 to 3280
@@ -137,11 +137,11 @@ services:
       - 4283:4283
       - 4284:4284
     volumes:
-      - scprime-data:/scprime-data
+      - scp-data:/scp-data
     restart: unless-stopped
 
 volumes:
-  scprime-data:
+  scp-data:
 ```
 
 
@@ -159,11 +159,11 @@ services:
       - 3283:3283
       - 4284:4284
     volumes:
-      - scprime-data:/scprime-data
+      - scp-data:/scp-data
     restart: unless-stopped
 
 volumes:
-  scprime-data:
+  scp-data:
 ```
 
 #### Only run the minimum required modules
@@ -180,11 +180,11 @@ services:
       - 4283:4283
       - 4284:4284
     volumes:
-      - scprime-data:/scprime-data
+      - scp-data:/scp-data
     restart: unless-stopped
 
 volumes:
-  scprime-data:
+  scp-data:
 ```
 
 ## API Password
