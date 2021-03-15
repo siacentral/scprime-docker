@@ -72,7 +72,7 @@ docker run \
 	--detach
 	--restart unless-stopped \
 	--publish 127.0.0.1:3280:3280 \
-	--public 4281:4281 \
+	--publish 4281:4281 \
 	--publish 4282:4282 \
 	--publish 4283:4283 \
 	siacentral/scprime --api-addr ":3280"
@@ -85,7 +85,7 @@ docker run \
 	--detach
 	--restart unless-stopped \
 	--publish 127.0.0.1:4280:4280 \
-	--public 4281:4281 \
+	--publish 4281:4281 \
 	--publish 4282:4282 \
 	--publish 3283:3283 \
 	siacentral/scprime --siamux-addr ":3283"
@@ -97,7 +97,7 @@ docker run \
 	--detach
 	--restart unless-stopped \
 	--publish 127.0.0.1:4280:4280 \
-	--public 4281:4281 \
+	--publish 4281:4281 \
 	--publish 4282:4282 \
 	siacentral/scprime -M gct
  ```
